@@ -13,9 +13,13 @@ export default function Contact() {
         setResult("Sending....");
         const formData = new FormData(event.target);
 
-        // ----- Enter your Web3 Forms Access key below---------
-
-        formData.append("access_key", "--- enter your access key here-------");
+        // Use Vite env var for Web3Forms access key (set VITE_WEB3FORMS_ACCESS_KEY)
+        const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+        if (!accessKey) {
+            setResult("Form not configured. Missing Web3Forms access key.");
+            return;
+        }
+        formData.append("access_key", accessKey);
 
         const res = await fetch("https://api.web3forms.com/submit", {
             method: "POST",
