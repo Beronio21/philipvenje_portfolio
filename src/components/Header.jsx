@@ -17,7 +17,7 @@ export default function Header() {
                     contact me <img src="./assets/right-arrow-white.png" alt="" className="w-4 dark:invert" />
                 </a>
 
-                <a href="/assets/resume_philipvenje.pdf" target="_blank" rel="noopener noreferrer"
+                <a href={`${import.meta.env.BASE_URL}assets/resume_philipvenje.pdf`} target="_blank" rel="noopener noreferrer"
                     className="px-10 py-2.5 rounded-full border border-gray-300 dark:border-white/25 hover:bg-slate-100/70 dark:hover:bg-darkHover flex items-center gap-2 bg-white dark:bg-transparent dark:text-white">
                     my resume <img src="./assets/download-icon.png" alt="" className="w-4 dark:invert" />
                 </a>
