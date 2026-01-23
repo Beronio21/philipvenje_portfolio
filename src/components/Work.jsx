@@ -13,9 +13,9 @@ export default function Work() {
             link: '',
         },
         {
-            name: 'Photography site',
+            name: 'EcoSentry IoT System',
             icon: './assets/work-3.png',
-            description: 'Web Design',
+            description: 'Full Stack + IoT',
             link: '',
         },
         {
