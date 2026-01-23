@@ -7,9 +7,9 @@ export default function Work() {
             link: '',
         },
         {
-            name: 'Geo based app',
+            name: 'Academic Archive System',
             icon: './assets/work-2.png',
-            description: 'mobile app',
+            description: 'Full Stack',
             link: '',
         },
         {
