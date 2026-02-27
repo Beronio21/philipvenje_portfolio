@@ -1,27 +1,91 @@
-export default function Header() {
-    return (
-        <div className="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4">
-            <img src="./assets/profile-img.png" alt="" className="rounded-full w-32" />
-            <h3 className="flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo">
-                Hi! I&apos;m Philip Venje
-                <img src="./assets/hand-icon.png" alt="" className="w-6 mb-1" />
-            </h3>
-            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-Ovo">Full-Stack Developer</h1>
-            <p className="max-w-2xl mx-auto font-Ovo mt-4 font-bold">I turn business challenges into<br />simple, scalable solutions.</p>
+import { motion } from "framer-motion";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 
-            <p className="max-w-2xl mx-auto font-Ovo mt-6">Motivated Frontend Developer with full-stack experience seeking a Junior Frontend role. Skilled in React, JavaScript, and modern frontend development, with backend knowledge in Node.js, Express, and database systems. Committed to creating responsive, user-friendly interfaces while understanding complete application architecture. Focused on collaborative growth and delivering quality user experiences.</p>
+const Header = () => {
+  const [text] = useTypewriter({
+    words: ['Full-Stack Developer', 'UI/UX Designer', 'React Specialist', 'Node.js Developer'],
+    loop: true,
+    typeSpeed: 70,
+    deleteSpeed: 50,
+    delaySpeed: 1500
+  });
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
-                <a href="#contact"
-                    className="px-10 py-2.5 border rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center gap-2 dark:border-transparent">
-                    contact me <img src="./assets/right-arrow-white.png" alt="" className="w-4 dark:invert" />
-                </a>
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4"
+    >
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8, type: "spring" }}
+        className="relative"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full blur-2xl opacity-40 animate-pulse"></div>
+        <img 
+          src="/assets/profile-img.png" 
+          alt="Philip Venje" 
+          className="relative w-32 h-32 rounded-full border-4 border-white/20 shadow-2xl"
+        />
+      </motion.div>
+      
+      <motion.h3 
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo"
+      >
+        Hi! I'm Philip Venje
+        <img src="/assets/hand-icon.png" alt="wave" className="w-6" />
+      </motion.h3>
+      
+      <motion.h1 
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="text-3xl sm:text-6xl lg:text-[66px] font-Ovo leading-tight"
+      >
+        <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+          {text}
+        </span>
+        <Cursor cursorColor="#8b5cf6" />
+      </motion.h1>
+      
+      <motion.p 
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.7 }}
+        className="max-w-2xl mx-auto font-Ovo text-gray-300"
+      >
+        I'm a passionate developer who loves building beautiful, functional, and user-friendly applications.
+      </motion.p>
+      
+      <motion.div 
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.9 }}
+        className="flex flex-col sm:flex-row items-center gap-4 mt-4"
+      >
+        <a 
+          href="#contact" 
+          className="px-10 py-3 border border-white rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white flex items-center gap-2 hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition-all duration-300 hover:scale-105"
+        >
+          Contact me 
+          <img src="/assets/arrow-icon.png" alt="arrow" className="w-4" />
+        </a>
+        <a 
+          href="/resume.pdf" 
+          download 
+          className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/50 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all duration-300"
+        >
+          My resume 
+          <img src="/assets/download-icon.png" alt="download" className="w-4" />
+        </a>
+      </motion.div>
+    </motion.div>
+  );
+};
 
-                <a href={`${import.meta.env.BASE_URL}assets/resume_philipvenje.pdf`} target="_blank" rel="noopener noreferrer"
-                    className="px-10 py-2.5 rounded-full border border-gray-300 dark:border-white/25 hover:bg-slate-100/70 dark:hover:bg-darkHover flex items-center gap-2 bg-white dark:bg-transparent dark:text-white">
-                    my resume <img src="./assets/download-icon.png" alt="" className="w-4 dark:invert" />
-                </a>
-            </div>
-        </div>
-    )
-}
+export default Header;
